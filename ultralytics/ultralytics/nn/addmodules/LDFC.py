@@ -5,7 +5,6 @@ import math
 import torch
 import torch.nn as nn
 from einops import rearrange
-import torch.nn.functional as F
 
 __all__ = ['LDFC']  
 
