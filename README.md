@@ -45,9 +45,10 @@
  
 # Instructions for use
  
-    First configure the environment, then import W-LDConv and LDFC into the tasks.py file for registration, 
-    create the configuration file and add the LDFC module, W-LDConv can also be combined with modules such as C3k2. 
+    Configure the environment first, and then import W-LDConv and LDFC into the tasks.py file for registration.
+    Create configuration files based on yolo11.yaml and add LDFC modules, W-LDConv can also be used in combination with modules such as C3k2.
     Then create the data set file. Finally, train using train.py.
+    The loss function can be selected in loss.py during the procedure, and the hyperparameters can be adjusted in default.
  
 # Version content update
     None
