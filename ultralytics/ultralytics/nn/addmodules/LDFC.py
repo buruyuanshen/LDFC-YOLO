@@ -9,7 +9,7 @@ from einops import rearrange
 __all__ = ['LDFC']  
 
 
-class deformable_LKA(nn.Module):
+class d(nn.Module):
     def __init__(self, dim):
         super().__init__()
         
@@ -34,7 +34,7 @@ class LDFC(nn.Module):
         
         self.proj_1 = nn.Conv2d(d_model, d_model, 1) 
         self.activation = nn.GELU() 
-        self.spatial_gating_unit = deformable_LKA(d_model) 
+        self.spatial_gating_unit = d(d_model) 
         self.proj_2 = nn.Conv2d(d_model, d_model, 1) 
 
     def forward(self, x):
