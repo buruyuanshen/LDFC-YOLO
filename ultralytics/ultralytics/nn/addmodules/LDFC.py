@@ -13,8 +13,8 @@ class d(nn.Module):
     def __init__(self, dim):
         super().__init__()
         
-        self.conv0 = WLConv5(inc=dim, outc=dim, num_param=5, stride=1, bias=None) 
-        self.conv_spatial = WLConv7(inc=dim, outc=dim, num_param=7, stride=1,dilation=3, bias=None) 
+        self.conv0 = WLDConv5(inc=dim, outc=dim, num_param=5, stride=1, bias=None) 
+        self.conv_spatial = WLDConv7(inc=dim, outc=dim, num_param=7, stride=1,dilation=3, bias=None) 
         self.conv1 = nn.Conv2d(dim, dim, 1) 
 
     def forward(self, x):
@@ -55,9 +55,9 @@ def autopad(k, p=None, d=1):
         p = (k-1)// 2 if isinstance(k, int) else [x // 2 for x in k]  
     return p
 
-class WLConv5(nn.Module):
+class WLDConv5(nn.Module):
     def __init__(self, inc, outc, num_param=2, stride=1,p=None,dilation=1,bias=None):
-        super(AKConv5, self).__init__()
+        super(WLDConv5, self).__init__()
         self.num_param = num_param
         self.stride = stride
         self.padding_h = autopad(num_param, p, dilation) 
@@ -211,9 +211,9 @@ class WLConv5(nn.Module):
         x_offset = rearrange(x_offset, 'b c h w n -> b c (h n) w')
         return x_offset
 
-class WLConv7(nn.Module):
+class WLDConv7(nn.Module):
     def __init__(self, inc, outc, num_param=2, stride=1,p=None,dilation=1,bias=None):
-        super(AKConv7, self).__init__()
+        super(WLDConv7, self).__init__()
         self.num_param = num_param
         self.stride = stride
         self.padding_h = autopad(num_param, p, dilation) 
