@@ -13,8 +13,8 @@ class deformable_LKA(nn.Module):
     def __init__(self, dim):
         super().__init__()
         
-        self.conv0 = AKConv5(inc=dim, outc=dim, num_param=5, stride=1, bias=None) 
-        self.conv_spatial = AKConv7(inc=dim, outc=dim, num_param=7, stride=1,dilation=3, bias=None) 
+        self.conv0 = WLConv5(inc=dim, outc=dim, num_param=5, stride=1, bias=None) 
+        self.conv_spatial = WLConv7(inc=dim, outc=dim, num_param=7, stride=1,dilation=3, bias=None) 
         self.conv1 = nn.Conv2d(dim, dim, 1) 
 
     def forward(self, x):
@@ -55,7 +55,7 @@ def autopad(k, p=None, d=1):
         p = (k-1)// 2 if isinstance(k, int) else [x // 2 for x in k]  
     return p
 
-class AKConv5(nn.Module):
+class WLConv5(nn.Module):
     def __init__(self, inc, outc, num_param=2, stride=1,p=None,dilation=1,bias=None):
         super(AKConv5, self).__init__()
         self.num_param = num_param
@@ -211,7 +211,7 @@ class AKConv5(nn.Module):
         x_offset = rearrange(x_offset, 'b c h w n -> b c (h n) w')
         return x_offset
 
-class AKConv7(nn.Module):
+class WLConv7(nn.Module):
     def __init__(self, inc, outc, num_param=2, stride=1,p=None,dilation=1,bias=None):
         super(AKConv7, self).__init__()
         self.num_param = num_param
