@@ -1,2 +1,0 @@
-# LDFC-YOLO
-LDFC-YOLO
